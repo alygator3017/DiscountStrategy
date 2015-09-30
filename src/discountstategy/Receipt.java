@@ -21,15 +21,10 @@ public class Receipt {
      * total
      */
     
-    //LineItem object
+    //LineItem array of LineItem objects
     private LineItem[] lineItem;
     
     //properties
-    
-    //subtotal of line item (price * qty from LineItem class) getSubTotal
-    private double lineItemTotalPrice;
-    //discount
-    private double lineItemDiscount;
     //subtotal of all items
     private double totalSubtotal;
     //subtotal of all discounts

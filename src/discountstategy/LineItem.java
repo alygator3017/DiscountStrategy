@@ -41,7 +41,7 @@ public class LineItem {
     }
     
     public double getSubTotal(){
-        double subtotal = item.getUnitPrice() - item.getAmountSaved(itemQty);
+        double subtotal = item.getUnitPrice() * itemQty;
         return subtotal;
     }
     
@@ -67,17 +67,13 @@ public class LineItem {
 //        LineItem lineItem = new LineItem(new Item("A100", "Hat", 20.00, new QtyDiscount(0.10, 2)), 2);
 //        //create a Receipt LineItem
 //        // ID     NAME      QTY     PRICE     SUBTOTAL     DISCOUNT
-//        String id = lineItem.getItemId();
-//        String name = lineItem.getItemName();
 //        int qty = lineItem.getItemQty();
-//        double unitPrice = lineItem.getUnitPrice();
-//        double subtotal = lineItem.getSubTotal();
-//        double discount = lineItem.getDiscount();
 //        
 //        System.out.println("Should get:");
 //        System.out.println("A100   Hat    2    20.0   40.0   4.0");
 //        System.out.println("Got:");
-//        System.out.println(id + "\t" + name + "\t" + qty + "\t" + unitPrice + "\t"
-//            + subtotal + "\t" + discount);
+//        System.out.println(lineItem.item.getItemID() + "\t" + lineItem.item.getItemName() 
+//                + "\t" + qty + "\t" + lineItem.item.getUnitPrice() + "\t"
+//            + lineItem.getSubTotal() + "\t" + lineItem.item.getAmountSaved(qty));
 //    }
 }
