@@ -22,12 +22,12 @@ public class LineItem {
     private Item item;
     
     //properties
-    private String itemId; 
-    private String itemName;
+//    private String itemId; 
+//    private String itemName;
     private int itemQty;
-    private double unitPrice;
-    private double discount;
-    private double subtotal;
+//    private double unitPrice;
+//    private double discount;
+//    private double subtotal;
     
     public LineItem(){
      
@@ -38,19 +38,10 @@ public class LineItem {
         //String itemName, double unitPrice, DiscountStrategy discount)
         setItem(item);
         setItemQty(itemQty);
-        setItemId(item.getItemID());
-        setItemName(item.getItemName());
-        setUnitPrice(item.getUnitPrice());
-        setDiscount(item.getAmountSaved(itemQty)); 
-    }
-
-    //subtotal helper method
-    private void setSubTotal(){
-        subtotal = unitPrice * itemQty;
     }
     
     public double getSubTotal(){
-        setSubTotal();
+        double subtotal = item.getUnitPrice() - item.getAmountSaved(itemQty);
         return subtotal;
     }
     
@@ -62,22 +53,6 @@ public class LineItem {
         this.item = item;
     }
 
-    public String getItemId() {
-        return itemId;
-    }
-
-    public final void setItemId(String itemId) {
-        this.itemId = itemId;
-    }
-
-    public String getItemName() {
-        return itemName;
-    }
-
-    public final void setItemName(String itemName) {
-        this.itemName = itemName;
-    }
-
     public int getItemQty() {
         return itemQty;
     }
@@ -86,21 +61,6 @@ public class LineItem {
         this.itemQty = itemQty;
     }
 
-    public double getUnitPrice() {
-        return unitPrice;
-    }
-
-    public final void setUnitPrice(double unitPrice) {
-        this.unitPrice = unitPrice;
-    }
-
-    public double getDiscount() {
-        return discount;
-    }
-
-    public final void setDiscount(double discount) {
-        this.discount = discount;
-    }
     
     //debug
 //    public static void main(String[] args) {
