@@ -21,6 +21,11 @@ public class Customer {
     private String customerID;
     private String customerName;
 
+    /**
+     *
+     * @param customerID
+     * @param customerName
+     */
     public Customer(String customerID, String customerName) {
         setCustomerID(customerID);
         setCustomerName(customerName);

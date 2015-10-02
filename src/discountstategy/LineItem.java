@@ -33,6 +33,11 @@ public class LineItem {
      
     }
 
+    /**
+     *
+     * @param item
+     * @param itemQty
+     */
     public LineItem(Item item, int itemQty) {
         //when calling LineItem constructor need to add new Item(String itemID,
         //String itemName, double unitPrice, DiscountStrategy discount)

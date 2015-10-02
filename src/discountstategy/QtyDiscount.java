@@ -16,8 +16,11 @@ public class QtyDiscount implements DiscountStrategy {
     //return discount
     //return discount price
 
-    
-
+    /**
+     *
+     * @param discountRate
+     * @param minQty
+     */
     public QtyDiscount(double discountRate, int minQty) {
         this.discountRate = discountRate;
         this.minQty = minQty;
@@ -62,13 +65,13 @@ public class QtyDiscount implements DiscountStrategy {
     }
     
     //debug
-    public static void main(String[] args) {
-        DiscountStrategy discount = new QtyDiscount(0.10, 5);
-//        discount.setDiscountRate(0.10);
-        double amt = discount.getAmountSaved(10.00, 2 );
-        System.out.println("Discount amt: $" + amt);
-        
-        double newTotal = discount.getDiscountedProductTotal(10.00, 2 );
-        System.out.println("Discounted Price Total: $" + newTotal);
-    }
+//    public static void main(String[] args) {
+//        DiscountStrategy discount = new QtyDiscount(0.10, 5);
+////        discount.setDiscountRate(0.10);
+//        double amt = discount.getAmountSaved(10.00, 2 );
+//        System.out.println("Discount amt: $" + amt);
+//        
+//        double newTotal = discount.getDiscountedProductTotal(10.00, 2 );
+//        System.out.println("Discounted Price Total: $" + newTotal);
+//    }
 }

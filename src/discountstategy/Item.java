@@ -17,6 +17,13 @@ public class Item {
     public Item() {
     }
 
+    /**
+     *
+     * @param itemID
+     * @param itemName
+     * @param unitPrice
+     * @param discount
+     */
     public Item(String itemID, String itemName, double unitPrice, DiscountStrategy discount) {
         setItemID(itemID);
         setItemName(itemName);
