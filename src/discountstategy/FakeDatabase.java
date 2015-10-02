@@ -9,7 +9,7 @@ package discountstategy;
  *
  * @author Alyson
  */
-public class FakeDatabase {
+public class FakeDatabase implements DatabaseAccessStrategy {
 
     ErrorHandlingOutputStrategy error = new ConsoleOutput();
     //error constant string properties
@@ -18,11 +18,17 @@ public class FakeDatabase {
     private final static String ERROR_ITEMID = "FakeDatabse.findItem has an illegal"
             + " arguement.";
     //create fake database of customers using array
-    private Customer[] customers = {};
+    private Customer[] customers = {
+        
+    };
     //create fake datavase of products using array
-    private Item[] items = {};
+    private Item[] items = {
+    
+    };
+
 
     //find customer using customer array
+    @Override
     public final Customer findCustomer(String customerID) {
         //error check
         if (customerID == null || customerID.length() == 0) {
@@ -42,6 +48,7 @@ public class FakeDatabase {
         return customer;
     }
     //find product using product array
+    @Override
     public final Item findItem(String itemID) {
         //error check
         if (itemID == null || itemID.length() == 0) {

@@ -20,7 +20,8 @@ public class Receipt {
      * amount saved (discount)
      * total
      */
-    
+    //database access
+    DatabaseAccessStrategy data = new FakeDatabase();
     //LineItem array of LineItem objects
     private LineItem[] lineItems = new LineItem[0];
     //cusomter object
@@ -38,11 +39,11 @@ public class Receipt {
      * gather line items in some way. 
      * 
      * for loop
-     * @param item
+     * @param itemID
      * @param qty
      */
     //add new line item (in array)
-    public void addNewLineItem(LineItem item, int qty){
+    public void addNewLineItem(String itemID, int qty){
         
         //temporary array
         LineItem[] temp = new LineItem[lineItems.length + 1];
@@ -53,7 +54,7 @@ public class Receipt {
         }
         
         //add new line item
-        temp[temp.length - 1] = new LineItem(item.getItem() , qty);
+        temp[temp.length - 1] = new LineItem(data.findItem(itemID) , qty);
         //copy temp array to lineItems array
         lineItems = temp;
         //null temp array
