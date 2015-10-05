@@ -6,6 +6,8 @@
 package discountstategy;
 
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -16,8 +18,13 @@ public class ReceiptInformation {
     //what is on a receipt
     private static final String DASHED = "------------------------------------------------------";
     //database access
-    DatabaseAccessStrategy data;
-    OutputStrategy output;
+    private DatabaseAccessStrategy data;
+    //output access
+    private OutputStrategy output;
+    //date
+    private final Date currentDate = new Date();
+    //date format
+    private final SimpleDateFormat date = new SimpleDateFormat("EEE, MMM d, yyyy hh:mm aaa");
     //LineItem array of LineItem objects
     private LineItem[] lineItems;
     //cusomter object
@@ -26,6 +33,7 @@ public class ReceiptInformation {
     //receipt no
     int receiptNo = 0;
     //properties
+    private String dateTime;
     private int qty;
     //subtotal of all items
     private double totalSubtotal;
@@ -46,7 +54,7 @@ public class ReceiptInformation {
         setOutputStrategy(output);
         receiptNo++;
         lineItems = new LineItem[0];
-        //date
+        dateTime = date.format(currentDate);
 
     }
 
@@ -58,7 +66,7 @@ public class ReceiptInformation {
         //customer date receipt no
         output.outputData("Kohls Department Store \n");
         output.outputData("Customer Name: " + getCustomer());
-        //output.outputData("Date of Sale: " );
+        output.outputData("Date of Sale: " + dateTime);
         output.outputData("Receipt No.: " + receiptNo);
         output.outputData(DASHED);
         //items
@@ -127,6 +135,10 @@ public class ReceiptInformation {
     }
 
     private void setCustomer(String customerID) {
+        // validation
+        if(customerID == null || customerID.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
         customer = new Customer();
         this.customerID = customerID;
     }

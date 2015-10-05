@@ -12,13 +12,14 @@ package discountstategy;
 public class Tester {
     
     public static void main(String[] args) {
-       ReceiptInformation receipt = new ReceiptInformation("110", new FakeDatabase(), new ConsoleOutput());
+       CashRegister cr = new CashRegister();
        
-       receipt.addNewLineItem("2001", 1);
-       receipt.addNewLineItem("2002", 3);
-       receipt.addNewLineItem("2004", 1);
-       
-       receipt.outputReceipt();
+       cr.startSale("115", new FakeDatabase(), new ConsoleOutput());
+       cr.addNewItem("2001", 1);
+       cr.addNewItem("2002", 2);
+       cr.addNewItem("2003", 1);
+       cr.addNewItem("2004", 1);
+       cr.endSale();
     }
     
 }

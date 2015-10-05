@@ -10,11 +10,18 @@ package discountstategy;
  * @author Alyson
  */
 public class CashRegister {
+    private ReceiptInformation receipt;
     //start sale
     public final void startSale(String customerID, DatabaseAccessStrategy db, OutputStrategy output){
-        
+         receipt = new ReceiptInformation(customerID, db, output);
     }
     //add item
+    public final void addNewItem(String itemID, int qty){
+        receipt.addNewLineItem(itemID, qty);
+    }
     
     //end sale
+    public final void endSale(){
+        receipt.outputReceipt();
+    }
 }
