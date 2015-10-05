@@ -11,7 +11,7 @@ package discountstategy;
  */
 public class FakeDatabase implements DatabaseAccessStrategy {
 
-    ErrorHandlingOutputStrategy error = new ConsoleOutput();
+    OutputStrategy error = new ConsoleOutput();
     //error constant string properties
     private final static String ERROR_CUSTOMERID = "FakeDatabase.findCustomer has"
             + " an illegal arguement.";

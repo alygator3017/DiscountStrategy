@@ -9,7 +9,7 @@ package discountstategy;
  *
  * @author Alyson
  */
-public class ConsoleOutput implements ErrorHandlingOutputStrategy {
+public class ConsoleOutput implements OutputStrategy {
 
     public ConsoleOutput() {
     }

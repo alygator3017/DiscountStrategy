@@ -9,7 +9,7 @@ package discountstategy;
  *
  * @author Alyson
  */
-public interface ErrorHandlingOutputStrategy {
+public interface OutputStrategy {
 
     void consoleOutput(String Output);
     

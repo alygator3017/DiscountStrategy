@@ -21,7 +21,7 @@ public class Customer implements CustomerInformationStrategy {
     private String customerID;
     private String customerName;
 
-    public Customer(String customerID){
+    public Customer(){
         
     }
     /**
