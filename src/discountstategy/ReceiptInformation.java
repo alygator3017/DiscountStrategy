@@ -5,6 +5,8 @@
  */
 package discountstategy;
 
+import java.text.NumberFormat;
+
 /**
  *
  * @author Alyson
@@ -12,7 +14,6 @@ package discountstategy;
 public class ReceiptInformation {
 
     //what is on a receipt
-
     /**
      * customer name --- don't need yet date and time ---don't need yet receipt
      * no --- don't need yet LineItem(s) subtotal amount saved (discount) total
@@ -35,28 +36,58 @@ public class ReceiptInformation {
     private double totalDiscount;
     //total of all items after discounts
     private double amountTotal;
-    
-    public ReceiptInformation(){
-        
-    }
-    public ReceiptInformation(String customerID, DatabaseAccessStrategy db, OutputStrategy output){
+
+    /**
+     *
+     * @param customerID
+     * @param db
+     * @param output
+     */
+    public ReceiptInformation(String customerID, DatabaseAccessStrategy db, OutputStrategy output) {
         setCustomer(customerID);
         setDatabaseStrategy(db);
         setOutputStrategy(output);
         receiptNo++;
         lineItems = new LineItem[0];
         //date
-        
+
     }
+
+    //print receipt
+    public final void outputReceipt() {
+        NumberFormat nf = NumberFormat.getCurrencyInstance();
+        //header
+        //customer date receipt no
+        output.consoleOutput("Kohls Department Store /n");
+        output.consoleOutput("Customer Name: " + getCustomer());
+        //output.consoleOutput("Date of Sale: " );
+        output.consoleOutput("Receipt No.: " + receiptNo);
+        output.consoleOutput("------------------------------------------------------");
+        //items
+        LineItem[] items = getLineItemArray();
+        for (int i = 0; i < getLineItemArray().length; i++) {
+            output.consoleOutput("Item ID: " + items[i].getItem().getItemID() + "\t"
+                    + "Item Name: " + items[i].getItem().getItemName() + "\t" 
+                    + "Unit Price: " + nf.format(items[i].getItem().getUnitPrice()) + "\t"
+                    + "Quantity: " + items[i].getItemQty() + "\t"
+                    + "Item Subtotal: " + nf.format(items[i].getSubTotal()) + "\t" 
+                    + "Discount: " + nf.format(items[i].getDiscount()));
+        }
+        //totals
+
+        //thank you
+    }
+
     //set databse strategy
-    private void setDatabaseStrategy(DatabaseAccessStrategy db){
+    private void setDatabaseStrategy(DatabaseAccessStrategy db) {
         this.data = db;
     }
-    
+
     //set output strategy
-    private void setOutputStrategy(OutputStrategy output){
+    private void setOutputStrategy(OutputStrategy output) {
         this.output = output;
     }
+
     /**
      * gather line items in some way.
      *
@@ -66,9 +97,9 @@ public class ReceiptInformation {
      * @param qty
      */
     //add new line item (in array)
-    public void addNewLineItem(String itemID, int qty) {
+    public final void addNewLineItem(String itemID, int qty) {
         //line item constructor object
-        LineItem itemObj = new LineItem(data.findItem(itemID),qty);
+        LineItem itemObj = new LineItem(data.findItem(itemID), qty);
         //temporary array
         LineItem[] temp = new LineItem[lineItems.length + 1];
 
@@ -91,27 +122,28 @@ public class ReceiptInformation {
     public final LineItem[] getLineItemArray() {
         return lineItems;
     }
-    public final void setCustomer(String customerID){
+
+    public final void setCustomer(String customerID) {
         customer = new Customer();
-        this.customerID =  customerID;
+        this.customerID = customerID;
     }
-    public final String getCustomer(){
+
+    public final String getCustomer() {
         return data.findCustomer(customerID).getCustomerName();
     }
-    
-    public final double getTotalSubtotal(){
+
+    public final double getTotalSubtotal() {
         return totalSubtotal;
     }
-    
-    public final double getTotalDiscount(){
+
+    public final double getTotalDiscount() {
         return totalDiscount;
     }
-    
-    public final double getAmountTotal(){
+
+    public final double getAmountTotal() {
         return amountTotal;
     }
-    
-    
+
 //    public static void main(String[] args) {
 //
 //        ReceiptInformation receipt = new ReceiptInformation();
