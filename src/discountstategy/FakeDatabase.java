@@ -72,8 +72,7 @@ public class FakeDatabase implements DatabaseAccessStrategy {
         if (itemID == null || itemID.length() == 0) {
             error.consoleOutput(ERROR_ITEMID);
             return null;
-        } else {
-        }
+        } 
 
         Item item = null;
         for (Item i : items) {
@@ -89,6 +88,6 @@ public class FakeDatabase implements DatabaseAccessStrategy {
         DatabaseAccessStrategy data = new FakeDatabase();
         
         System.out.println(data.findCustomer("102").getCustomerName());
-        System.out.println(data.findItem("2002").getItemName());
+        System.out.println(data.findItem("2002"));
     }
 }
