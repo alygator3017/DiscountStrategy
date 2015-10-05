@@ -21,7 +21,7 @@ public class ReceiptInformation {
     DatabaseAccessStrategy data;
     OutputStrategy output;
     //LineItem array of LineItem objects
-    private LineItem[] lineItems = new LineItem[0];
+    private LineItem[] lineItems;
     //cusomter object
     private CustomerInformationStrategy customer;
     private String customerID;
@@ -44,6 +44,8 @@ public class ReceiptInformation {
         setDatabaseStrategy(db);
         setOutputStrategy(output);
         receiptNo++;
+        lineItems = new LineItem[0];
+        //date
         
     }
     //set databse strategy
