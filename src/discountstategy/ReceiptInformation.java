@@ -14,10 +14,7 @@ import java.text.NumberFormat;
 public class ReceiptInformation {
 
     //what is on a receipt
-    /**
-     * customer name --- don't need yet date and time ---don't need yet receipt
-     * no --- don't need yet LineItem(s) subtotal amount saved (discount) total
-     */
+    private static final String DASHED = "------------------------------------------------------";
     //database access
     DatabaseAccessStrategy data;
     OutputStrategy output;
@@ -63,7 +60,7 @@ public class ReceiptInformation {
         output.outputData("Customer Name: " + getCustomer());
         //output.outputData("Date of Sale: " );
         output.outputData("Receipt No.: " + receiptNo);
-        output.outputData("------------------------------------------------------");
+        output.outputData(DASHED);
         //items
         LineItem[] items = getLineItemArray();
         for (int i = 0; i < getLineItemArray().length; i++) {
@@ -74,11 +71,14 @@ public class ReceiptInformation {
                     + "Item Subtotal: " + nf.format(items[i].getSubTotal()) + "\t" 
                     + "Discount: " + nf.format(items[i].getDiscount()));
         }
-        output.outputData("------------------------------------------------------");
+        output.outputData(DASHED);
         //totals
-        output.outputData("");
+        output.outputData("\t\t\t\tSubtotal: " + nf.format(getTotalSubtotal()));
+        output.outputData("\t\t\t\tSaved: " + nf.format(getTotalDiscount()));
+        output.outputData("\t\t\t\tTotal: " + nf.format(getAmountTotal()));
 
         //thank you
+        output.outputData("Thank you for Shopping at Kohls!");
     }
 
     //set databse strategy
@@ -122,28 +122,28 @@ public class ReceiptInformation {
         amountTotal = totalSubtotal - totalDiscount;
     }
 
-    public final LineItem[] getLineItemArray() {
+    private LineItem[] getLineItemArray() {
         return lineItems;
     }
 
-    public final void setCustomer(String customerID) {
+    private void setCustomer(String customerID) {
         customer = new Customer();
         this.customerID = customerID;
     }
 
-    public final String getCustomer() {
+    private String getCustomer() {
         return data.findCustomer(customerID).getCustomerName();
     }
 
-    public final double getTotalSubtotal() {
+    private double getTotalSubtotal() {
         return totalSubtotal;
     }
 
-    public final double getTotalDiscount() {
+    private double getTotalDiscount() {
         return totalDiscount;
     }
 
-    public final double getAmountTotal() {
+    private double getAmountTotal() {
         return amountTotal;
     }
 
