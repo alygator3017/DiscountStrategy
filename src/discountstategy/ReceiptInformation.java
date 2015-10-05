@@ -126,24 +126,24 @@ public class ReceiptInformation {
         return lineItems;
     }
 
-    private final void setCustomer(String customerID) {
+    private void setCustomer(String customerID) {
         customer = new Customer();
         this.customerID = customerID;
     }
 
-    private final String getCustomer() {
+    private String getCustomer() {
         return data.findCustomer(customerID).getCustomerName();
     }
 
-    private final double getTotalSubtotal() {
+    private double getTotalSubtotal() {
         return totalSubtotal;
     }
 
-    private final double getTotalDiscount() {
+    private double getTotalDiscount() {
         return totalDiscount;
     }
 
-    private final double getAmountTotal() {
+    private double getAmountTotal() {
         return amountTotal;
     }
 
