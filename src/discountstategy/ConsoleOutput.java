@@ -15,7 +15,7 @@ public class ConsoleOutput implements OutputStrategy {
     }
     
     @Override
-    public void consoleOutput(String Output){
+    public void outputData(String Output){
         System.out.println(Output);
     }
 }

@@ -11,6 +11,6 @@ package discountstategy;
  */
 public interface OutputStrategy {
 
-    void consoleOutput(String Output);
+    void outputData(String Output);
     
 }

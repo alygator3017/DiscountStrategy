@@ -56,24 +56,27 @@ public class ReceiptInformation {
     //print receipt
     public final void outputReceipt() {
         NumberFormat nf = NumberFormat.getCurrencyInstance();
+        
         //header
         //customer date receipt no
-        output.consoleOutput("Kohls Department Store /n");
-        output.consoleOutput("Customer Name: " + getCustomer());
-        //output.consoleOutput("Date of Sale: " );
-        output.consoleOutput("Receipt No.: " + receiptNo);
-        output.consoleOutput("------------------------------------------------------");
+        output.outputData("Kohls Department Store \n");
+        output.outputData("Customer Name: " + getCustomer());
+        //output.outputData("Date of Sale: " );
+        output.outputData("Receipt No.: " + receiptNo);
+        output.outputData("------------------------------------------------------");
         //items
         LineItem[] items = getLineItemArray();
         for (int i = 0; i < getLineItemArray().length; i++) {
-            output.consoleOutput("Item ID: " + items[i].getItem().getItemID() + "\t"
+            output.outputData("Item ID: " + items[i].getItem().getItemID() + "\t"
                     + "Item Name: " + items[i].getItem().getItemName() + "\t" 
                     + "Unit Price: " + nf.format(items[i].getItem().getUnitPrice()) + "\t"
                     + "Quantity: " + items[i].getItemQty() + "\t"
                     + "Item Subtotal: " + nf.format(items[i].getSubTotal()) + "\t" 
                     + "Discount: " + nf.format(items[i].getDiscount()));
         }
+        output.outputData("------------------------------------------------------");
         //totals
+        output.outputData("");
 
         //thank you
     }

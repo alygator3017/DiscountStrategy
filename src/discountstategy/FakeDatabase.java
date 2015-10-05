@@ -50,7 +50,7 @@ public class FakeDatabase implements DatabaseAccessStrategy {
     public final CustomerInformationStrategy findCustomer(String customerID) {
         //error check
         if (customerID == null || customerID.length() == 0) {
-            error.consoleOutput(ERROR_CUSTOMERID);
+            error.outputData(ERROR_CUSTOMERID);
             return null;
         } else {
         }
@@ -70,7 +70,7 @@ public class FakeDatabase implements DatabaseAccessStrategy {
     public final Item findItem(String itemID) {
         //error check
         if (itemID == null || itemID.length() == 0) {
-            error.consoleOutput(ERROR_ITEMID);
+            error.outputData(ERROR_ITEMID);
             return null;
         } 
 
