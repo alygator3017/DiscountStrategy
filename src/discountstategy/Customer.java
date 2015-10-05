@@ -35,7 +35,7 @@ public class Customer implements CustomerInformationStrategy {
     }
 
     @Override
-    public String getCustomerID() {
+    public final String getCustomerID() {
         return customerID;
     }
 
@@ -43,7 +43,8 @@ public class Customer implements CustomerInformationStrategy {
         this.customerID = customerID;
     }
 
-    public String getCustomerName() {
+    @Override
+    public final String getCustomerName() {
         return customerName;
     }
 

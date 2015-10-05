@@ -45,12 +45,12 @@ public class LineItem {
         setItemQty(itemQty);
     }
     
-    public double getSubTotal(){
+    public final double getSubTotal(){
         double subtotal = item.getUnitPrice() * itemQty;
         return subtotal;
     }
     
-    public Item getItem() {
+    public final Item getItem() {
         return item;
     }
 
@@ -58,7 +58,7 @@ public class LineItem {
         this.item = item;
     }
 
-    public int getItemQty() {
+    public final int getItemQty() {
         return itemQty;
     }
 
@@ -66,7 +66,7 @@ public class LineItem {
         this.itemQty = itemQty;
     }
 
-    public double getDiscount(){
+    public final double getDiscount(){
         return item.getAmountSaved(itemQty);
     }
     //debug

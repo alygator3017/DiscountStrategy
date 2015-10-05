@@ -10,5 +10,11 @@ package discountstategy;
  * @author Alyson
  */
 public class CashRegister {
+    //start sale
+    public final void startSale(String customerID, DatabaseAccessStrategy db, OutputStrategy output){
+        
+    }
+    //add item
     
+    //end sale
 }

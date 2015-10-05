@@ -31,16 +31,16 @@ public class Item {
         setDiscount(discount);
     }
     
-    public double getAmountSaved(int qty){
+    public final double getAmountSaved(int qty){
         return discount.getAmountSaved(unitPrice, qty);
     }
     
-    public double getDiscountedProductTotal(int qty){
+    public final double getDiscountedProductTotal(int qty){
         return discount.getDiscountedProductTotal(unitPrice, qty);
     }
     
 
-    public String getItemID() {
+    public final String getItemID() {
         return itemID;
     }
 
@@ -48,7 +48,7 @@ public class Item {
         this.itemID = itemID;
     }
 
-    public String getItemName() {
+    public final String getItemName() {
         return itemName;
     }
 
@@ -56,7 +56,7 @@ public class Item {
         this.itemName = itemName;
     }
 
-    public double getUnitPrice() {
+    public final double getUnitPrice() {
         return unitPrice;
     }
 
@@ -64,7 +64,7 @@ public class Item {
         this.unitPrice = unitPrice;
     }
 
-    public DiscountStrategy getDiscount() {
+    public final DiscountStrategy getDiscount() {
         return discount;
     }
 

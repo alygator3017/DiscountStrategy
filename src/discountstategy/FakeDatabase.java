@@ -84,10 +84,10 @@ public class FakeDatabase implements DatabaseAccessStrategy {
 
         return item;
     }
-    public static void main(String[] args) {
-        DatabaseAccessStrategy data = new FakeDatabase();
-        
-        System.out.println(data.findCustomer("102").getCustomerName());
-        System.out.println(data.findItem("2002"));
-    }
+//    public static void main(String[] args) {
+//        DatabaseAccessStrategy data = new FakeDatabase();
+//        
+//        System.out.println(data.findCustomer("102").getCustomerName());
+//        System.out.println(data.findItem("2002"));
+//    }
 }
