@@ -12,9 +12,9 @@ package discountstategy;
 public interface DatabaseAccessStrategy {
 
     //find customer using customer array
-    Customer findCustomer(String customerID);
+    public abstract CustomerInformationStrategy findCustomer(String customerID);
 
     //find product using product array
-    Item findItem(String itemID);
+    public abstract Item findItem(String itemID);
     
 }

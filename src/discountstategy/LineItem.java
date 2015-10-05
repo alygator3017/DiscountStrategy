@@ -66,7 +66,9 @@ public class LineItem {
         this.itemQty = itemQty;
     }
 
-    
+    public double getDiscount(){
+        return item.getAmountSaved(itemQty);
+    }
     //debug
 //    public static void main(String[] args) {
 //        LineItem lineItem = new LineItem(new Item("A100", "Hat", 20.00, new QtyDiscount(0.10, 2)), 2);

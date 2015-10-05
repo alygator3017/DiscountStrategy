@@ -5,7 +5,7 @@ package discountstategy;
  *
  * @author Alyson
  */
-public class Customer {
+public class Customer implements CustomerInformationStrategy {
     /**
      * what does a customer need
      * customerId
@@ -21,6 +21,9 @@ public class Customer {
     private String customerID;
     private String customerName;
 
+    public Customer(String customerID){
+        
+    }
     /**
      *
      * @param customerID
@@ -31,6 +34,7 @@ public class Customer {
         setCustomerName(customerName);
     }
 
+    @Override
     public String getCustomerID() {
         return customerID;
     }
