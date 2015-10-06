@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package discountstategy;
 
 /**
@@ -12,12 +8,10 @@ package discountstategy;
 public class FakeDatabase implements DatabaseAccessStrategy {
 
     OutputStrategy error = new ConsoleOutput();
-    //error constant string properties
     private final static String ERROR_CUSTOMERID = "FakeDatabase.findCustomer has"
             + " an illegal arguement.";
     private final static String ERROR_ITEMID = "FakeDatabse.findItem has an illegal"
             + " arguement.";
-    //create fake database of customers using array
     private CustomerInformationStrategy[] customers = {
         new Customer("101", "John Smith"),
         new Customer("102", "Martha Jones"),
@@ -36,7 +30,6 @@ public class FakeDatabase implements DatabaseAccessStrategy {
         new Customer("115", "The Doctor")
         
     };
-    //create fake datavase of products using array
     private Item[] items = {
         new Item("2001", "Sonic Screwdriver", 69.99, new NoDiscount()),
         new Item("2002", "Scarf", 22.00, new QtyDiscount(0.10,3)),
@@ -45,7 +38,6 @@ public class FakeDatabase implements DatabaseAccessStrategy {
     };
 
 
-    //find customer using customer array
     @Override
     public final CustomerInformationStrategy findCustomer(String customerID) {
         //error check
@@ -65,7 +57,6 @@ public class FakeDatabase implements DatabaseAccessStrategy {
 
         return customer;
     }
-    //find product using product array
     @Override
     public final Item findItem(String itemID) {
         //error check
@@ -84,10 +75,4 @@ public class FakeDatabase implements DatabaseAccessStrategy {
 
         return item;
     }
-//    public static void main(String[] args) {
-//        DatabaseAccessStrategy data = new FakeDatabase();
-//        
-//        System.out.println(data.findCustomer("102").getCustomerName());
-//        System.out.println(data.findItem("2002"));
-//    }
 }

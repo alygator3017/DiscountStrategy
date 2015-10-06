@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package discountstategy;
 
 /**
@@ -10,10 +6,10 @@ package discountstategy;
  * @author Alyson
  */
 public class PercentOffDiscount implements DiscountStrategy {
-    //discount rate
+
     private double discountRate;
-    //return discount
-    //return discount price
+
+
 
     public PercentOffDiscount(double discountRate) {
         this.discountRate = discountRate;
@@ -21,11 +17,17 @@ public class PercentOffDiscount implements DiscountStrategy {
     
     @Override
     public final double getDiscountedProductTotal(double unitPrice, int qty){
+        if(unitPrice < 0 || qty <= 0) {
+            throw new IllegalArgumentException();
+        }
         return (unitPrice * qty) - getAmountSaved(unitPrice, qty);
     }
     
     @Override
     public final double getAmountSaved(double unitPrice, int qty){
+        if(unitPrice < 0 || qty <= 0) {
+            throw new IllegalArgumentException();
+        }
         return (unitPrice * qty) * discountRate;
     }
 
@@ -36,17 +38,11 @@ public class PercentOffDiscount implements DiscountStrategy {
 
     @Override
     public final void setDiscountRate(double discountRate) {
+        if(discountRate < 0) {
+            throw new IllegalArgumentException();
+        }
         this.discountRate = discountRate;
     }
     
-    //debug
-//    public static void main(String[] args) {
-//        PercentOffDiscount discount = new PercentOffDiscount(0.10);
-////        discount.setDiscountRate(0.10);
-//        double amt = discount.getAmountSaved(10.00, 2 );
-//        System.out.println("Discount amt: $" + amt);
-//        
-//        double newTotal = discount.getDiscountedProductTotal(10.00, 2 );
-//        System.out.println("Discounted Price Total: $" + newTotal);
-//    }
+
 }

@@ -6,18 +6,9 @@ package discountstategy;
  * @author Alyson
  */
 public class Customer implements CustomerInformationStrategy {
-    /**
-     * what does a customer need
-     * customerId
-     * name
-     * could add: 
-     * address
-     * email
-     * phone
-     * member rewards
-     */
     
-    //properties
+    
+    
     private String customerID;
     private String customerName;
 
@@ -30,6 +21,9 @@ public class Customer implements CustomerInformationStrategy {
      * @param customerName
      */
     public Customer(String customerID, String customerName) {
+        if(customerID == null || customerID.isEmpty() || customerName == null || customerName.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
         setCustomerID(customerID);
         setCustomerName(customerName);
     }
@@ -40,6 +34,9 @@ public class Customer implements CustomerInformationStrategy {
     }
 
     public final void setCustomerID(String customerID) {
+        if(customerID == null || customerID.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
         this.customerID = customerID;
     }
 
@@ -49,6 +46,9 @@ public class Customer implements CustomerInformationStrategy {
     }
 
     public final void setCustomerName(String customerName) {
+        if(customerName == null || customerName.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
         this.customerName = customerName;
     }
    

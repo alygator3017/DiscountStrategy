@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package discountstategy;
 
 /**
@@ -10,11 +5,8 @@ package discountstategy;
  * @author Alyson
  */
 public class QtyDiscount implements DiscountStrategy {
-    //discount rate
     private double discountRate;
     public double minQty;
-    //return discount
-    //return discount price
 
     /**
      *
@@ -22,12 +14,18 @@ public class QtyDiscount implements DiscountStrategy {
      * @param minQty
      */
     public QtyDiscount(double discountRate, int minQty) {
+        if(discountRate <= 0 || minQty <= 1) {
+            throw new IllegalArgumentException();
+        }
         this.discountRate = discountRate;
         this.minQty = minQty;
     }
     
     @Override
     public final double getDiscountedProductTotal(double unitPrice, int qty){
+        if(unitPrice < 0 || qty <= 0) {
+            throw new IllegalArgumentException();
+        }
         if(qty >= minQty){
             return (unitPrice * qty) - getAmountSaved(unitPrice, qty);
         }else{
@@ -38,6 +36,9 @@ public class QtyDiscount implements DiscountStrategy {
     
     @Override
     public final double getAmountSaved(double unitPrice, int qty){
+        if(unitPrice < 0 || qty <= 0) {
+            throw new IllegalArgumentException();
+        }
         if(qty >= minQty){
             return (unitPrice * qty) * discountRate;
         }else{
@@ -53,6 +54,9 @@ public class QtyDiscount implements DiscountStrategy {
 
     @Override
     public final void setDiscountRate(double discountRate) {
+        if(discountRate <= 0) {
+            throw new IllegalArgumentException();
+        }
         this.discountRate = discountRate;
     }
     
@@ -61,17 +65,10 @@ public class QtyDiscount implements DiscountStrategy {
     }
 
     public final void setMinQty(double minQty) {
+        if(minQty <= 1) {
+            throw new IllegalArgumentException();
+        }
         this.minQty = minQty;
     }
     
-    //debug
-//    public static void main(String[] args) {
-//        DiscountStrategy discount = new QtyDiscount(0.10, 5);
-////        discount.setDiscountRate(0.10);
-//        double amt = discount.getAmountSaved(10.00, 2 );
-//        System.out.println("Discount amt: $" + amt);
-//        
-//        double newTotal = discount.getDiscountedProductTotal(10.00, 2 );
-//        System.out.println("Discounted Price Total: $" + newTotal);
-//    }
 }

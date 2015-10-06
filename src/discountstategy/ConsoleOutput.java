@@ -15,7 +15,10 @@ public class ConsoleOutput implements OutputStrategy {
     }
     
     @Override
-    public final void outputData(String Output){
-        System.out.println(Output);
+    public final void outputData(String output){
+        if(output == null || output.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
+        System.out.println(output);
     }
 }

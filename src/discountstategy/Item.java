@@ -5,14 +5,14 @@ package discountstategy;
  * @author Alyson
  */
 public class Item {
-    //properties
+
     private String itemID;
     private String itemName;
     private double unitPrice;
-    //DiscountStrategy passed in
+
     private DiscountStrategy discount;
     
-    //constructor
+
 
     public Item() {
     }
@@ -25,6 +25,9 @@ public class Item {
      * @param discount
      */
     public Item(String itemID, String itemName, double unitPrice, DiscountStrategy discount) {
+        if(itemID == null || itemID.isEmpty() || itemName == null || itemName.isEmpty() || unitPrice < 0 || discount == null) {
+            throw new IllegalArgumentException();
+        }
         setItemID(itemID);
         setItemName(itemName);
         setUnitPrice(unitPrice);
@@ -32,10 +35,16 @@ public class Item {
     }
     
     public final double getAmountSaved(int qty){
+        if(qty <= 0) {
+            throw new IllegalArgumentException();
+        }
         return discount.getAmountSaved(unitPrice, qty);
     }
     
     public final double getDiscountedProductTotal(int qty){
+        if(qty <= 0) {
+            throw new IllegalArgumentException();
+        }
         return discount.getDiscountedProductTotal(unitPrice, qty);
     }
     
@@ -45,6 +54,9 @@ public class Item {
     }
 
     public final void setItemID(String itemID) {
+        if(itemID == null || itemID.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
         this.itemID = itemID;
     }
 
@@ -53,6 +65,9 @@ public class Item {
     }
 
     public final void setItemName(String itemName) {
+        if(itemName == null || itemName.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
         this.itemName = itemName;
     }
 
@@ -61,6 +76,9 @@ public class Item {
     }
 
     public final void setUnitPrice(double unitPrice) {
+        if(unitPrice < 0) {
+            throw new IllegalArgumentException();
+        }
         this.unitPrice = unitPrice;
     }
 
@@ -69,17 +87,11 @@ public class Item {
     }
 
     public final void setDiscount(DiscountStrategy discount) {
+        if(discount == null) {
+            throw new IllegalArgumentException();
+        }
         this.discount = discount;
     }
     
-    //debug
-//    public static void main(String[] args) {
-//        Item item = new Item("A100", "Hat", 20.00, new PercentOffDiscount(0.10));
-//        double amtSaved = item.getAmountSaved(2);
-//        System.out.println("Expected 4.00 and got: " + amtSaved);
-//        
-//        Item item2 = new Item("A100", "Hat", 20.00, new QtyDiscount(0.10, 2));
-//        double amtSaved2 = item.getAmountSaved(2);
-//        System.out.println("Expected 4.00 and got: " + amtSaved2);
-//    }
+
 }

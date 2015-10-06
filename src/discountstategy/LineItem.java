@@ -6,28 +6,9 @@ package discountstategy;
  * @author Alyson
  */
 public class LineItem {
-    /**
-     * what is in a line item?
-     * 
-     * the product information
-     * id
-     * name
-     * qty
-     * price
-     * subtotal
-     * discount
-     */
-    
-    //item property
-    private Item item;
-    
-    //properties
-//    private String itemId; 
-//    private String itemName;
+      
+    private Item item;    
     private int itemQty;
-//    private double unitPrice;
-//    private double discount;
-//    private double subtotal;
     
     public LineItem(){
      
@@ -39,8 +20,9 @@ public class LineItem {
      * @param itemQty
      */
     public LineItem(Item item, int itemQty) {
-        //when calling LineItem constructor need to add new Item(String itemID,
-        //String itemName, double unitPrice, DiscountStrategy discount)
+        if(item == null || itemQty <= 0) {
+            throw new IllegalArgumentException();
+        }
         setItem(item);
         setItemQty(itemQty);
     }
@@ -55,6 +37,9 @@ public class LineItem {
     }
 
     public final void setItem(Item item) {
+        if(item == null) {
+            throw new IllegalArgumentException();
+        }
         this.item = item;
     }
 
@@ -63,24 +48,14 @@ public class LineItem {
     }
 
     public final void setItemQty(int itemQty) {
+        if(itemQty <=0) {
+            throw new IllegalArgumentException();
+        }
         this.itemQty = itemQty;
     }
 
     public final double getDiscount(){
         return item.getAmountSaved(itemQty);
     }
-    //debug
-//    public static void main(String[] args) {
-//        LineItem lineItem = new LineItem(new Item("A100", "Hat", 20.00, new QtyDiscount(0.10, 2)), 2);
-//        //create a Receipt LineItem
-//        // ID     NAME      QTY     PRICE     SUBTOTAL     DISCOUNT
-//        int qty = lineItem.getItemQty();
-//        
-//        System.out.println("Should get:");
-//        System.out.println("A100   Hat    2    20.0   40.0   4.0");
-//        System.out.println("Got:");
-//        System.out.println(lineItem.item.getItemID() + "\t" + lineItem.item.getItemName() 
-//                + "\t" + qty + "\t" + lineItem.item.getUnitPrice() + "\t"
-//            + lineItem.getSubTotal() + "\t" + lineItem.item.getAmountSaved(qty));
-//    }
+    
 }

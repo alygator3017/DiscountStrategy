@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package discountstategy;
 
 /**
@@ -11,16 +7,23 @@ package discountstategy;
  */
 public class CashRegister {
     private ReceiptInformation receipt;
-    //start sale
+
     public final void startSale(String customerID, DatabaseAccessStrategy db, OutputStrategy output){
+        
+        if(customerID == null || customerID.isEmpty() || db == null || output == null) {
+            throw new IllegalArgumentException();
+        }
          receipt = new ReceiptInformation(customerID, db, output);
     }
-    //add item
+
     public final void addNewItem(String itemID, int qty){
+        if(itemID == null || itemID.isEmpty() || qty <= 0) {
+            throw new IllegalArgumentException();
+        }
         receipt.addNewLineItem(itemID, qty);
     }
     
-    //end sale
+
     public final void endSale(){
         receipt.outputReceipt();
     }
