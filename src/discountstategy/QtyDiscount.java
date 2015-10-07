@@ -6,7 +6,7 @@ package discountstategy;
  */
 public class QtyDiscount implements DiscountStrategy {
     private double discountRate;
-    public double minQty;
+    private double minQty;
 
     /**
      *

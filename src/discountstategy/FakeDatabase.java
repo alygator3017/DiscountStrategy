@@ -7,7 +7,7 @@ package discountstategy;
  */
 public class FakeDatabase implements DatabaseAccessStrategy {
 
-    OutputStrategy error = new ConsoleOutput();
+    private final OutputStrategy error = new ConsoleOutput();
     private final static String ERROR_CUSTOMERID = "FakeDatabase.findCustomer has"
             + " an illegal arguement.";
     private final static String ERROR_ITEMID = "FakeDatabse.findItem has an illegal"

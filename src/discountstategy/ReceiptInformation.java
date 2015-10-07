@@ -25,7 +25,6 @@ public class ReceiptInformation {
      */
     private static int receiptNo = 0;
     private String dateTime;
-    private int qty;
     private double totalSubtotal;
     private double totalDiscount;
     private double amountTotal;
