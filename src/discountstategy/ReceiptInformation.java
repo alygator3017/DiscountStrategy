@@ -19,7 +19,11 @@ public class ReceiptInformation {
     private LineItem[] lineItems;
     private CustomerInformationStrategy customer;
     private String customerID;
-    int receiptNo = 0;
+    /**
+     * receiptNo has to be static because otherwise it will reset to 0
+     * becomes a global counting variable
+     */
+    private static int receiptNo = 0;
     private String dateTime;
     private int qty;
     private double totalSubtotal;
