@@ -7,6 +7,6 @@ package discountstategy;
  */
 public interface OutputStrategy {
 
-    void outputData(String Output);
+    public abstract void outputData(String Output);
     
 }
